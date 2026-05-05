@@ -91,13 +91,27 @@ int execute_builtin(char **args) {
         }
         return 1;
     }
-
-    if (strcmp(args[0], "help") == 0) {
-        printf("\nAvailable commands:\n");
-        printf("  cd <dir>\n  exit\n  help\n");
-        printf("Supports piping: cmd1 | cmd2\n");
+ if (strcmp(args[0], "history") == 0) {
+        HIST_ENTRY **hist = history_list();
+        if (hist == NULL) {
+            printf("No history yet.\n");
+        } else {
+            for (int i = 0; hist[i] != NULL; i++) {
+                printf("  %d  %s\n", i + 1, hist[i]->line);
+            }
+        }
         return 1;
     }
+ 
+    if (strcmp(args[0], "help") == 0) {
+        printf("\nSimple Shell Help\n");
+        printf("Built-in commands:\n");
+        printf("  cd <dir>\n  exit\n  help\n  history\n");
+        printf("Supports multi-pipe: ls | grep txt | sort | head\n");
+        printf("Use up/down arrow keys to navigate command history.\n");
+        return 1;
+    }
+ 
 
     return 0;
 }
