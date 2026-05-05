@@ -11,10 +11,8 @@
 
 // Function to print banner
 void printBanner() {
-    printf("\n**********************************************\n\n");
-    printf("           ********** My Shell ************\n\n");
-    printf("      \"Focus beats talent when talent doesn't focus.\"  \n\n");
-    printf("**********************************************\n\n");
+    printf("  _____MY CUSTOM SHELL______ \n\n");
+    
 }
 
 // Function to build the prompt string with current directory
